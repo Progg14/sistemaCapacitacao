@@ -1,130 +1,171 @@
 package entidades;
 
 public class ServidorPublico {
-        private int matricula;
-        private String nome;
-        private String foto;
-        private String orgao;
-        private String vinculo;
-        private double salario;
-        private int idade;
-        private int tempoDeContribuicao;
-        private String cargo;
-        private String telefone;
-        private String celular;
-        private String cpf;
-        private String lotacao;
-        private String email;
+    private int matricula;
+    private String nome;
+    private String foto;
+    private String orgao;
+    private String vinculo;
+    private double salario;
+    private int idade;
+    private int tempoDeContribuicao;
+    private String cargo;
+    private String telefone;
+    private String celular;
+    private String cpf;
+    private String lotacao;
+    private String email;
+    private double horasExtras;
 
-        public String getEmail() {
-                return email;
-        }
+    public ServidorPublico(){};
+    public ServidorPublico(int matricula, String nome){
+        this.matricula = matricula;
+        this.nome = nome;
+    }
+    public ServidorPublico(int matricula, String nome, String cargo){
+        this.matricula = matricula;
+        this.nome = nome;
+        this.cargo = cargo;
+    }
 
-        public void setEmail(String email) {
-                this.email = email;
-        }
+    public double getHorasExtras() {
+        return horasExtras;
+    }
 
-        public String getLotacao() {
-                return lotacao;
-        }
+    public void setHorasExtras(double horasExtras) {
+        this.horasExtras = horasExtras;
+    }
 
-        public void setLotacao(String lotacao) {
-                this.lotacao = lotacao;
-        }
+    public String getEmail() {
+        return email;
+    }
 
-        public int getMatricula() {
-                return matricula;
-        }
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-        public void setMatricula(int matricula) {
-                this.matricula = matricula;
-        }
+    public String getLotacao() {
+        return lotacao;
+    }
 
-        public String getNome() {
-                return nome;
-        }
+    public void setLotacao(String lotacao) {
+        this.lotacao = lotacao;
+    }
 
-        public void setNome(String nome) {
-                this.nome = nome;
-        }
+    public int getMatricula() {
+        return matricula;
+    }
 
-        public String getFoto() {
-                return foto;
-        }
+    public void setMatricula(int matricula) {
+        this.matricula = matricula;
+    }
 
-        public void setFoto(String foto) {
-                this.foto = foto;
-        }
+    public String getNome() {
+        return nome;
+    }
 
-        public String getOrgao() {
-                return orgao;
-        }
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
-        public void setOrgao(String orgao) {
-                this.orgao = orgao;
-        }
+    public String getFoto() {
+        return foto;
+    }
 
-        public String getVinculo() {
-                return vinculo;
-        }
+    public void setFoto(String foto) {
+        this.foto = foto;
+    }
 
-        public void setVinculo(String vinculo) {
-                this.vinculo = vinculo;
-        }
+    public String getOrgao() {
+        return orgao;
+    }
 
-        public double getSalario() {
-                return salario;
-        }
+    public void setOrgao(String orgao) {
+        this.orgao = orgao;
+    }
 
-        public void setSalario(double salario) {
-                this.salario = salario;
-        }
+    public String getVinculo() {
+        return vinculo;
+    }
 
-        public int getIdade() {
-                return idade;
-        }
+    public void setVinculo(String vinculo) {
+        this.vinculo = vinculo;
+    }
 
-        public void setIdade(int idade) {
-                this.idade = idade;
-        }
+    public double getSalario() {
+        return salario;
+    }
 
-        public int getTempoDeContribuicao() {
-                return tempoDeContribuicao;
-        }
+    public void setSalario(double salario) {
+        this.salario = salario;
+    }
 
-        public void setTempoDeContribuicao(int tempoDeContribuicao) {
-                this.tempoDeContribuicao = tempoDeContribuicao;
-        }
+    public int getIdade() {
+        return idade;
+    }
 
-        public String getCargo() {
-                return cargo;
-        }
+    public void setIdade(int idade) {
+        this.idade = idade;
+    }
 
-        public void setCargo(String cargo) {
-                this.cargo = cargo;
-        }
+    public int getTempoDeContribuicao() {
+        return tempoDeContribuicao;
+    }
 
-        public String getTelefone() {
-                return telefone;
-        }
+    public void setTempoDeContribuicao(int tempoDeContribuicao) {
+        this.tempoDeContribuicao = tempoDeContribuicao;
+    }
 
-        public void setTelefone(String telefone) {
-                this.telefone = telefone;
-        }
+    public String getCargo() {
+        return cargo;
+    }
 
-        public String getCelular() {
-                return celular;
-        }
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
+    }
 
-        public void setCelular(String celular) {
-                this.celular = celular;
-        }
+    public String getTelefone() {
+        return telefone;
+    }
 
-        public String getCpf() {
-                return cpf;
-        }
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
 
-        public void setCpf(String cpf) {
-                this.cpf = cpf;
+    public String getCelular() {
+        return celular;
+    }
+
+    public void setCelular(String celular) {
+        this.celular = celular;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+    public double salarioHoraExtra(double horasTrabalhadas, double valorHora) {
+        double salarioMensal = salario+ (horasTrabalhadas*valorHora);
+        horasExtras = salarioMensal;
+        return (salarioMensal);
+
+    }
+    public double calcularSalariototal(double salario) {
+        salario = salario + horasExtras;
+
+        return salario;
+    }
+    public double calcularNumeros(double... numeros){
+        double soma = 0;
+        for (double numero : numeros ) {
+            soma += numero;
         }
+        System.out.println("A soma dos argumentos informados "+ soma);
+        return soma;
+
+    }
+
 }
