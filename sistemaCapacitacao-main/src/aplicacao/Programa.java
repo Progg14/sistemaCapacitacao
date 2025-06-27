@@ -3,64 +3,56 @@ package aplicacao;
 import entidades.ServidorPublico;
 import entidades.Produto;
 import entidades.Employee;
+import entidades.Curso;
+
+import javax.swing.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Programa {
-    public Programa() {
+
+    //        Lista de servidores
+    List<ServidorPublico> servidores = new ArrayList<>();
+    //        Lista de cursos
+    List<Curso> cursos = new ArrayList<>();
+
+    public void adicionarServidorPublico() {
+        int matricula = Integer.parseInt(JOptionPane.showInputDialog(null, "Informe a Matricula"));
+        String nome = JOptionPane.showInputDialog(null, "Informe o nome do Servidor");
+        String orgao = JOptionPane.showInputDialog(null, "Informe o orgao");
+        String cargo = JOptionPane.showInputDialog(null, "Informe o cargo do Servidor");
+        String lotacao = JOptionPane.showInputDialog(null, "Informe lotacao do Servidor");
+        String email = JOptionPane.showInputDialog(null, "Informe o email do Servidor");
+        double salario = Double.parseDouble(JOptionPane.showInputDialog(null, "Informe o salario do servidor"));
+
+        ServidorPublico servidor = new ServidorPublico(matricula, nome, orgao, cargo, lotacao, email, salario);
+        servidores.add(servidor);
     }
-
+    public void listarServidores(){
+        for (ServidorPublico servidor : servidores) {
+            System.out.println(servidor);
+        }
+    }
+    public void listarServidores(int matricula) {
+        boolean encontrou = false;
+        for(ServidorPublico servidor : servidores) {
+            if(servidor.getMatricula() == matricula) {
+                System.out.println(servidor);
+                encontrou = true;
+                break;
+            }
+        }
+        if(!encontrou) {
+            JOptionPane.showInputDialog(null, "Servidor não encontrado!!!");
+        }
+    }
     public static void main(String[] args) {
-////        ServidorPublico isabela = new ServidorPublico();
-////        isabela.setNome("Isabela");
-////        isabela.setCargo("Auditor");
-////        isabela.setOrgao("ANVISA");
-////        isabela.setLotacao("Brasilia");
-////        isabela.setEmail("isabela@gmail.");
-////
-////        ServidorPublico João = new ServidorPublico();
-////        ServidorPublico maria = new ServidorPublico(123, "Maria");
-////            System.out.println(maria.getNome());
-////
-////        ServidorPublico jose= new ServidorPublico(134, "José,", "Auditor");
-////            System.out.println(jose.getNome());
-////            System.out.println(jose.getCargo());
-////
-////        System.out.println("Servidor: "+ isabela.getNome());
-////
-////        isabela.calcularSalarioHorasExtras(10, 5);
-////        System.out.println("Servidor "+ isabela.getNome());
-////        System.out.printf("Horas extras R$ %.2f: ",isabela.getHorasExtras());
-////        System.out.println("Salário total : " +isabela.calcularSalarioTotal(1512));
-//        String nome;
-//        int qntd;
-//        double preco;
-//        Scanner leia = new Scanner(System.in);
-//        System.out.println("Nome do produto: ");
-//        nome = leia.nextLine();
-//        System.out.println("Quantidade: ");
-//        qntd = leia.nextInt();
-//        System.out.println("O preço é: ");
-//        preco = leia.nextDouble();
-//        Produto produto = new Produto(nome, preco, qntd);
-//
-        String nome;
-        double salarioB;
-        double tax;
-        Scanner leia = new Scanner(System.in);
-        System.out.println("Nome do funcionário: ");
-        nome = leia.nextLine();
-        System.out.println("Seu salário bruto é: ");
-        salarioB = leia.nextDouble();
-        System.out.println("Seus impostos são de: ");
-        tax = leia.nextDouble();
-        Employee funcionario = new Employee();
-        funcionario.setName(nome);
-        funcionario.setGrossSalary(salarioB);
-        funcionario.setTax(tax);
-        System.out.println("Funcionário: "+funcionario.getName()+", "+funcionario.netSalary());
+        Programa programa = new Programa();
+        programa.adicionarServidorPublico();
+        programa.adicionarServidorPublico();
+        programa.listarServidores();
 
-        System.out.println();
-        System.out.println("Quantos porcentos adicionados ao salário: ");
-        funcionario.increaseSalary(leia.nextDouble());
+        programa.listarServidores(Integer.parseInt(JOptionPane.showInputDialog(null, "Informe a matricula que deseja pesquisar")));
     }
 }
